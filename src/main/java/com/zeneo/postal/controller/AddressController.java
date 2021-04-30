@@ -3,10 +3,8 @@ package com.zeneo.postal.controller;
 import com.zeneo.postal.model.Address;
 import com.zeneo.postal.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,11 +18,13 @@ public class AddressController {
         this.addressService = addressService;
     }
 
+    @CrossOrigin
     @GetMapping("/city/{city}")
-    public List<Address> getCityAddresses(@PathVariable String city) {
+    public Page<Address> getCityAddresses(@PathVariable String city) {
         return addressService.getAddressesByCity(city);
     }
 
+    @CrossOrigin
     @GetMapping("/zip/{zipCode}")
     public List<Address> getCodeAddresses(@PathVariable String zipCode) {
         return addressService.getAddressesByZipCode(zipCode);

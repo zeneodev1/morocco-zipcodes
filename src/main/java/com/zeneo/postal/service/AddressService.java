@@ -2,7 +2,8 @@ package com.zeneo.postal.service;
 
 import com.zeneo.postal.model.Address;
 import com.zeneo.postal.repository.AddressRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class AddressService {
         return addressRepository.findAllByZipCode(code);
     }
 
-    public List<Address> getAddressesByCity(String city) {
-        return addressRepository.findAllByCity(city.toUpperCase());
+    public Page<Address> getAddressesByCity(String city) {
+        return addressRepository.findAllByCityStartingWith(city.toUpperCase(), PageRequest.of(0, 10));
     }
 
 }
