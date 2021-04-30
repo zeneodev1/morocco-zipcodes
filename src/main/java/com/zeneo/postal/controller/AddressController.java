@@ -20,7 +20,7 @@ public class AddressController {
 
     @CrossOrigin
     @GetMapping("/city/{city}")
-    public Page<Address> getCityAddresses(@PathVariable String city) {
+    public List<Address> getCityAddresses(@PathVariable String city) {
         return addressService.getAddressesByCity(city);
     }
 

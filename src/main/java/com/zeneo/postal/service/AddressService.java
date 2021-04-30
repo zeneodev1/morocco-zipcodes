@@ -22,8 +22,8 @@ public class AddressService {
         return addressRepository.findAllByZipCode(code);
     }
 
-    public Page<Address> getAddressesByCity(String city) {
-        return addressRepository.findAllByCityStartingWith(city.toUpperCase(), PageRequest.of(0, 10));
+    public List<Address> getAddressesByCity(String city) {
+        return addressRepository.findAllByCityStartingWith(city.toUpperCase());
     }
 
 }

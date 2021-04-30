@@ -10,5 +10,5 @@ import java.util.List;
 public interface AddressRepository extends MongoRepository<Address, String> {
     List<Address> findAllByZipCode(String code);
 
-    Page<Address> findAllByCityStartingWith(String city, Pageable pageable);
+    List<Address> findAllByCityStartingWith(String city);
 }
